@@ -487,6 +487,7 @@ body::after {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   background-color: #252B42;
+  z-index: 5;
 }
 
 .header._header-scroll .header__logo {
@@ -524,8 +525,13 @@ body::after {
 
 .menu-open .header__logo {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   color: #fff;
+}
+
+.menu {
+  position: relative;
+  z-index: 3;
 }
 
 .menu__list {
@@ -746,7 +752,6 @@ body::after {
 }
 
 .middle-footer__title::before {
-  content: "\ea38";
   display: none;
   right: -30px;
   position: absolute;
@@ -856,13 +861,8 @@ body::after {
   color: #E42F08;
 }
 
-.no-webp .main{
-  background-image: url("../img/header/header-bg.jpg"); }
-
 .main {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  position: relative;
 }
 
 @supports (padding-bottom: clamp( 5rem , 2.1168831169rem  +  14.4155844156vw , 11.9375rem )) {
@@ -887,6 +887,21 @@ body::after {
   .main {
     padding-top: calc(8.125rem + 3.625 * (100vw - 20rem) / 47.25);
   }
+}
+
+.no-webp .main::after{
+  background-image: url("../img/header/header-bg.jpg"); }
+
+.main::after {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main__title {
@@ -987,6 +1002,11 @@ body::after {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+}
+
+.cards {
+  position: relative;
+  z-index: 3;
 }
 
 .cards__inner {
@@ -1608,15 +1628,12 @@ body::after {
   }
 }
 
-@media (max-width: 65.3125em) {
-  .practice__item {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 100%;
-            flex: 0 1 100%;
-  }
-}
-
 @media (max-width: 65.625em) {
+  .main::after {
+    background-position: right;
+    opacity: 0.5;
+  }
+
   .who__inner {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -1635,6 +1652,14 @@ body::after {
 
   .item-who__title {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 65.3125em) {
+  .practice__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 100%;
+            flex: 0 1 100%;
   }
 }
 
@@ -1854,6 +1879,7 @@ body::after {
     width: 100%;
     background-color: #252B42;
     overflow: auto;
+    z-index: 7;
   }
 
   .menu__body::after {
@@ -2054,9 +2080,12 @@ body::after {
 }
 
 @media (max-width: 24.3125em) {
+  .main__btn {
+    width: 100%;
+  }
+
   .main__btn:not(:last-child) {
     margin-bottom: 0.625rem;
-    width: 100%;
   }
 
   .main__btn_transparent {
@@ -2074,6 +2103,12 @@ body::after {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 20.625em) {
+  .who__video {
+    margin: 0 -0.9375rem;
   }
 }
 
@@ -2137,4 +2172,4 @@ body::after {
   }
 }
 
-.webp .main{ background-image: url(../img/header/header-bg.webp); }
+.webp .main::after{ background-image: url(../img/header/header-bg.webp); }
