@@ -752,6 +752,7 @@ body::after {
 }
 
 .middle-footer__title::before {
+  content: "\ea38";
   display: none;
   right: -30px;
   position: absolute;
